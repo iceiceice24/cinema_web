@@ -1,0 +1,26 @@
+<h2>Movies</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td>
+          <%= link_to 'Show', admin_movie_path(movie), class: 'btn btn-sm btn-info' %>
+          <%= link_to 'Edit', edit_admin_movie_path(movie), class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'Delete', admin_movie_path(movie), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add new movie', new_admin_movie_path, class: 'btn btn-primary' %>
+<%= link_to 'Back', admin_root_path %>

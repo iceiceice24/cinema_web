@@ -1,0 +1,30 @@
+<h1><%= @cinema.name %></h1>
+
+<p><%= pluralize(@cinema.seats.count, 'seat') %></p>
+
+<h2>Bookings</h2>
+
+<% if @bookings.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Seat ID</th>
+        <th>Screening Date & Time</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.user.name %></td>
+          <td><%= booking.seat_id %></td>
+          <td><%= booking.screening.screening_at.in_time_zone('UTC').strftime('%d %B %Y, %I:%M %p %Z') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+<% else %>
+  <p>No bookings yet.</p>
+<% end %>

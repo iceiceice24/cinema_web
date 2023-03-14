@@ -1,0 +1,21 @@
+<h1>Cinemas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cinema.each do |cinema| %>
+      <tr>
+        <td><%= cinema.name %></td>
+        <td><%= cinema.created_at.strftime('%d %B %Y, %I:%M %p %Z') %></td>
+        <td><%= link_to 'View', [:admin, cinema] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

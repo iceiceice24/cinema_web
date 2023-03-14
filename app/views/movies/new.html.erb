@@ -1,0 +1,26 @@
+<h2>New Movie</h2>
+
+<%= form_with model: @movie, url: admin_movies_path do |form| %>
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h3>
+
+      <ul>
+        <% @movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit 'Create', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', admin_root_path %>
